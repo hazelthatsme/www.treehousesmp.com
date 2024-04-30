@@ -1,0 +1,62 @@
+---
+import Navbar from "@/components/navbar.astro"
+import "@/styles/global.css"
+const { title, description, tags, frontmatter } = Astro.props
+const resolvedTitle = title || (!!frontmatter && frontmatter.title);
+---
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" href="data:;" />
+        <meta name="generator" content={Astro.generator} />
+
+        <title>{resolvedTitle}{resolvedTitle && ' | '} Treehouse SMP</title>
+        <meta name="description" content={description ?? ""} />
+        <meta name="keywords" content={tags} />
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <div class="title">Treehouse SMP</div>
+                <Navbar />
+            </header>
+            <main>
+                <slot />
+            </main>
+            <footer>
+                The Treehouse SMP Minecraft server is not operated by Mojang Studios or Microsoft Corporation.
+                <br>
+                This website is licensed under the MIT license, and its source code is available on <a href="https://github.com/hazelthatsme/treehousesmp.com">GitHub</a>.
+            </footer>
+        </div>
+    </body>
+</html>
+
+<style>
+    .title {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .wrapper {
+        width: 100%;
+        max-width: 1080px;
+        margin: 0 auto;
+    }
+
+    header, footer {
+        margin: 1rem;
+        color: white;
+        text-align: center;
+    }
+
+    main {
+        background-color: white;
+        padding: 1rem;
+        margin: 1rem;
+    }
+</style>

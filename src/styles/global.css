@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: black;
+    background-image: linear-gradient(180deg, #000000aa, #000000aa), url("/bg.jpg");
+    font-family: sans-serif;
+}
+
+pre code {
+    display: block;
+    padding: .5rem;
+}

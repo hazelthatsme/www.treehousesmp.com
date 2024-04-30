@@ -1,0 +1,52 @@
+---
+const items = [
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Join SMP",
+        href: "/smp",
+    },
+    {
+        title: "Join Discord",
+        href: "/discord",
+    },
+    {
+        title: "Rules",
+        href: "/rules",
+    },
+]
+const currentPath = new URL(Astro.request.url).pathname.slice(1);
+---
+
+<nav>
+    {items.map((item) => 
+        <a class={["nav-item", "/" + currentPath == item.href ? "active" : null].filter(x => x != null).join(" ")} {...item} aria-label={item.title}>
+            {item.title}
+        </a>
+    )}
+</nav>
+
+<style>
+    nav {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background-color: white;
+        padding: 1rem;
+    }
+
+    nav .nav-item {
+        padding: .5rem;
+        background-color: black;
+        color: white;
+        text-decoration: none;
+    }
+
+    nav .nav-item:hover, nav .nav-item.active {
+        background-color: green;
+    }
+</style>
