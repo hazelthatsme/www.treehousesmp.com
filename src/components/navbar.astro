@@ -17,12 +17,12 @@ const items = [
         href: "/rules",
     },
 ]
-const currentPath = new URL(Astro.request.url).pathname.slice(1);
+const currentPath = new URL(Astro.request.url).pathname.slice(1).replace(/^\/|\/$/g, '');
 ---
 
 <nav>
     {items.map((item) => 
-        <a class={["nav-item", "/" + currentPath == item.href ? "active" : null].filter(x => x != null).join(" ")} {...item} aria-label={item.title}>
+        <a class={["nav-item", currentPath == item.href.replace(/^\/|\/$/g, '') ? "active" : null].filter(x => x != null).join(" ")} {...item} aria-label={item.title}>
             {item.title}
         </a>
     )}
